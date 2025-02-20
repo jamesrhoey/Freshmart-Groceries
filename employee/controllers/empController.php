@@ -5,13 +5,11 @@ class EmployeeController {
 
     public function addEmployee($data) {
         global $conn;
-        $sql = "INSERT INTO employees (name,bday, address, contact, emergencyNumber) VALUES (:name, :bday, :address, :contact, :emergencyNumber)";
+        $sql = "INSERT INTO employees (name, email, position) VALUES (:name, :email, :position)";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $data['name']);
-        $stmt->bindParam(':bday', $data['bday']);
-        $stmt->bindParam(':address', $data['address']);
-        $stmt->bindParam(':contact', $data['contact']);
-        $stmt->bindParam(':emergencyNumber', $data['emergencyNumber']);
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':position', $data['position']);
         $stmt->execute();
 
         return ['success' => 'Employee added successfully'];
@@ -34,13 +32,11 @@ class EmployeeController {
 
     public function updateEmployee($id, $data) {
         global $conn;
-        $sql = "UPDATE employees SET name = :name, bday = :bday, address = :address, contact = :contact, emergencyNumber = :emergencyNumber, WHERE id = :id";
+        $sql = "UPDATE employees SET name = :name, email = :email, position = :position WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $data['name']);
-        $stmt->bindParam(':bday', $data['bday']);
-        $stmt->bindParam(':address', $data['address']);
-        $stmt->bindParam(':contact', $data['contact']);
-        $stmt->bindParam(':emergencyNumber', $data['emergencyNumber']);
+        $stmt->bindParam(':email', $data['email']);
+        $stmt->bindParam(':position', $data['position']);
         $stmt->bindParam(':id', $id);
         $stmt->execute();
 
