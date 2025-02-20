@@ -34,7 +34,7 @@ class EmployeeController {
 
     public function updateEmployee($id, $data) {
         global $conn;
-        $sql = "UPDATE employees SET name = :name, bday = :bday, address = :address, contact = :contact, emergencyNumber = :emergencyNumber, WHERE id = :id";
+        $sql = "UPDATE employees SET name = :name, bday = :bday, address = :address, contact = :contact, emergencyNumber = :emergencyNumber WHERE id = :id";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(':name', $data['name']);
         $stmt->bindParam(':bday', $data['bday']);

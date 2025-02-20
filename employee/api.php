@@ -1,5 +1,5 @@
 <?php
-include_once '../controllers/empController.php';
+include_once './empController.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_SERVER['REQUEST_URI'] == '/employees') {
     $data = json_decode(file_get_contents('php://input'), true);
