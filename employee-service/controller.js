@@ -11,8 +11,8 @@ const createEmployee = async (req, res) =>{
         const employee = await Employee.create({name, email, number, department, salary})
         res.status(200).json({success: true, message: employee})
     } catch (error) {
-        console.log(err)
-        res.status(500).json({success: false, message: err.message})
+        console.log(error)
+        res.status(500).json({success: false, message: error.message})
     }
 
 }
@@ -20,35 +20,27 @@ const createEmployee = async (req, res) =>{
 const getAllEmployees = async (req, res) =>{
 
     try {
-        const employees = await Employee.find({})
+        const employee = await Employee.find({})
         res.status(200).json({success: true, message: employee})
     } catch (error) {
-        console.log(err)
-        res.status(500).json({success: false, message: err.message})
+        console.log(error)
+        res.status(500).json({success: false, message: error.message})
     }
 } 
 
-const deleteEmployee = async (req, res) =>{
-
-    const {employeeId} = req.params
-
-    if(!mongoose.Types.ObjectId.isValid(employeetId)){
-        res.status(400).json({success: false, messsage: `Invalid ID: ${employeeId}`})
-    }
+const DeleteEmployee = async (req, res) => {
+    const { employeeId } = req.params;
     try {
-        const employee = await Employee.findByIdAndDelete(req.params.id);
-        if (!employee) {
-            return res.status(404).json({ message: 'Employee not found' });
-        }
-        res.json({ message: 'Employee deleted successfully' });
-    } catch (error) {
-        res.status(500).json({ message: error.message });
+        const employee = await Employee.findOneAndDelete({ _id: employeeId });
+        res.status(200).json({ success: true, message: employee });
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ success: false, message: err.message });
     }
-
-}
+};
 
 module.exports={
     createEmployee,
     getAllEmployees,
-    deleteEmployee
+    DeleteEmployee
 }
