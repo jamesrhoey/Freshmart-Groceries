@@ -1,9 +1,9 @@
 <?php
-$host = "127.0.0.1";  // Use IP instead of 'localhost' to avoid socket issues
-$user = "root";       // MariaDB root user
-$password = "";       // Your MariaDB root password (if any)
-$database = "employee_service"; // Your actual database name
-$port = 3306;         // Explicitly define the port
+$host = "127.0.0.1";  
+$user = "root";      
+$password = "";      
+$database = "employee_service"; 
+$port = 3306;        
 
 // Create a connection
 $conn = new mysqli($host, $user, $password, $database, $port);
