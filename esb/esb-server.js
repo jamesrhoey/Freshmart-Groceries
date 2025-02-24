@@ -29,7 +29,7 @@ app.listen(process.env.PORT, () => {
 app.use(`${mapper}/inventory`, productServices)
 app.use(`${mapper}/pos`, posServices)
 app.use(`${mapper}/auth`, authService)
-app.use(`${mapper}/employees`, employeeService) // ADD THIS
+app.use(`${mapper}/employees`, employeeService) 
 
 // If no request matches
 app.use((req, res) => {
