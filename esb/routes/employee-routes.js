@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
+const { addEmployee, fetchEmployees, deleteEmployee, updateEmployee } = require('../controllers/employee-controller');
 
-
-const { addEmployee, fetchEmployees, deleteEmployee } = require('../controllers/employee-controller');
-
-
-router.post('/new', addEmployee);
+// ✅ Fix Route Paths
+router.post('/', addEmployee);  // Instead of '/new'
 router.get('/all', fetchEmployees);
-router.delete('/:id', deleteEmployee);
+router.delete('/:id', deleteEmployee);  // Instead of '/delete/:id'
+router.put('/:id', updateEmployee);  // Ensure update works
 
 module.exports = router;
+
